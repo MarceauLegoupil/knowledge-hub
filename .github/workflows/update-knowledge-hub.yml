@@ -1,0 +1,65 @@
+name: Update Knowledge Hub
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Regenerer toutes les videos deja analysees"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: knowledge-hub-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install --no-package-lock
+
+      - name: Analyze playlist
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4.1-mini' }}
+        run: |
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            npm run analyze -- --force
+          else
+            npm run analyze
+          fi
+
+      - name: Validate generated data
+        run: npm run validate
+
+      - name: Commit generated data
+        run: |
+          if git diff --quiet -- data.json; then
+            echo "No data changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "Update Knowledge Hub data"
+          git push

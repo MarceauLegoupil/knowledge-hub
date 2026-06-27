@@ -1,0 +1,70 @@
+{
+  "generated_at": null,
+  "playlist_url": "",
+  "categories": [
+    "Business",
+    "Marketing",
+    "Vente",
+    "Productivite",
+    "Mindset",
+    "Sport / sante",
+    "Developpement personnel",
+    "Finance",
+    "Creation de contenu",
+    "IA / automatisation",
+    "Autre"
+  ],
+  "videos": [],
+  "items": [],
+  "grouped": [
+    {
+      "category": "Business",
+      "items": []
+    },
+    {
+      "category": "Marketing",
+      "items": []
+    },
+    {
+      "category": "Vente",
+      "items": []
+    },
+    {
+      "category": "Productivite",
+      "items": []
+    },
+    {
+      "category": "Mindset",
+      "items": []
+    },
+    {
+      "category": "Sport / sante",
+      "items": []
+    },
+    {
+      "category": "Developpement personnel",
+      "items": []
+    },
+    {
+      "category": "Finance",
+      "items": []
+    },
+    {
+      "category": "Creation de contenu",
+      "items": []
+    },
+    {
+      "category": "IA / automatisation",
+      "items": []
+    },
+    {
+      "category": "Autre",
+      "items": []
+    }
+  ],
+  "metadata": {
+    "analyzer": "not_run",
+    "notes": "Ce fichier ne doit contenir que des resumes reformules. Les transcriptions completes ne sont pas stockees.",
+    "errors": []
+  }
+}

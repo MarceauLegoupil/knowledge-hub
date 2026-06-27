@@ -1,0 +1,23 @@
+{
+  "playlist_url": "https://youtube.com/playlist?list=VOTRE_PLAYLIST_ID",
+  "transcript_languages": ["fr", "en"],
+  "max_videos": 0,
+  "max_items_per_video": 5,
+  "analyzer": "openai",
+  "openai_model": "gpt-4.1-mini",
+  "target_language": "fr",
+  "require_ai_translation": true,
+  "categories": [
+    "Business",
+    "Marketing",
+    "Vente",
+    "Productivite",
+    "Mindset",
+    "Sport / sante",
+    "Developpement personnel",
+    "Finance",
+    "Creation de contenu",
+    "IA / automatisation",
+    "Autre"
+  ]
+}

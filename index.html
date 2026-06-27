@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Knowledge Hub transforme une playlist YouTube en base de connaissances synthetique, categorisee et consultable."
+    />
+    <title>Knowledge Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar" aria-label="Filtres et configuration">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">KH</span>
+          <div>
+            <p class="eyebrow">YouTube Playlist</p>
+            <h1>Knowledge Hub</h1>
+          </div>
+        </div>
+
+        <section class="panel">
+          <h2>Playlist</h2>
+          <form id="playlistForm" class="playlist-form">
+            <label for="playlistInput">URL de la playlist</label>
+            <input
+              id="playlistInput"
+              name="playlist"
+              type="url"
+              placeholder="https://youtube.com/playlist?list=..."
+              autocomplete="off"
+            />
+            <button type="submit">Préparer la commande</button>
+          </form>
+          <p id="commandHint" class="hint">
+            En production, GitHub Actions verifie automatiquement la playlist toutes les heures.
+          </p>
+          <code id="commandOutput" class="command" hidden></code>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Categories</h2>
+            <button id="clearFilters" type="button" class="ghost-button">Tout</button>
+          </div>
+          <div id="categoryFilters" class="filter-list" aria-label="Filtrer par categorie"></div>
+        </section>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Base de connaissances</p>
+            <h2>Idees importantes, reformulees et classees</h2>
+          </div>
+          <div class="search-wrap">
+            <label class="sr-only" for="searchInput">Rechercher</label>
+            <input id="searchInput" type="search" placeholder="Rechercher une idee, source ou categorie" />
+          </div>
+        </header>
+
+        <section id="status" class="status" role="status" aria-live="polite"></section>
+
+        <section class="stats" aria-label="Statistiques">
+          <article>
+            <span id="ideaCount">0</span>
+            <p>idees</p>
+          </article>
+          <article>
+            <span id="videoCount">0</span>
+            <p>videos analysees</p>
+          </article>
+          <article>
+            <span id="categoryCount">0</span>
+            <p>categories actives</p>
+          </article>
+          <article>
+            <span id="errorCount">0</span>
+            <p>sans transcription</p>
+          </article>
+        </section>
+
+        <section id="cards" class="cards" aria-label="Idees extraites"></section>
+
+        <template id="cardTemplate">
+          <article class="idea-card">
+            <div class="card-topline">
+              <span class="badge"></span>
+              <span class="duration"></span>
+            </div>
+            <h3></h3>
+            <p class="summary"></p>
+            <div class="source">
+              <span class="source-title"></span>
+              <span class="source-channel"></span>
+            </div>
+            <a class="video-link" target="_blank" rel="noreferrer">Voir la video source</a>
+          </article>
+        </template>
+      </main>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
