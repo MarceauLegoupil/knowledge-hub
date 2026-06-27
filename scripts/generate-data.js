@@ -4,7 +4,7 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
 import ytplModule from "ytpl";
-import transcriptModule from "youtube-transcript";
+import * as transcriptModule from "youtube-transcript";
 
 dotenv.config();
 
